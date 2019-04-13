@@ -129,6 +129,7 @@ $app->delete('/api/post/delete/{post_id}', function(Request $request, Response $
     $sql = "DELETE FROM posts WHERE post_id = $post_id";
 
     try{
+        
         // Get DB Object
         $db = new db();
         // Connect
