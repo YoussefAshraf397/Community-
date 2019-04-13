@@ -34,3 +34,23 @@ $app->get('/api/posts', function(Request $request, Response $response){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
+// Get Single post
+$app->get('/api/post/{post_id}', function(Request $request, Response $response){
+    $id = $request->getAttribute('post_id');
+
+    $sql = "SELECT * FROM posts WHERE post_id = $id";
+
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+
+        $stmt = $db->query($sql);
+        $customer = $stmt->fetch(PDO::FETCH_OBJ);
+        $db = null;
+        echo json_encode($customer);
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+});

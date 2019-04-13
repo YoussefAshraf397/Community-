@@ -1,6 +1,6 @@
 # Community-
 
-in this component we are responsible the community of our company .<br />
+in this component we are responsible the community of our company .
 
 
 ## Installation
