@@ -54,3 +54,35 @@ $app->get('/api/post/{post_id}', function(Request $request, Response $response){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
 });
+// Add post
+$app->post('/api/post/add', function(Request $request, Response $response){
+    $user_id = $request->getParam('user_id');
+    $content = $request->getParam('content');
+    $privacy = $request->getParam('privacy');
+   
+
+    $sql = "INSERT INTO posts (user_id,content,privacy) VALUES
+    (:user_id,:content,:privacy)";
+
+    try{
+        // Get DB Object
+        $db = new db();
+        // Connect
+        $db = $db->connect();
+
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindParam(':user_id', $user_id);
+        $stmt->bindParam(':content', $content);
+        $stmt->bindParam(':privacy', $privacy);
+       
+
+        $stmt->execute();
+
+        echo '{"notice": {"text": "post Added"}';
+
+    } catch(PDOException $e){
+        echo '{"error": {"text": '.$e->getMessage().'}';
+    }
+    
+});
