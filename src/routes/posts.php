@@ -84,4 +84,5 @@ $app->post('/api/post/add', function(Request $request, Response $response){
     } catch(PDOException $e){
         echo '{"error": {"text": '.$e->getMessage().'}';
     }
+    
 });
