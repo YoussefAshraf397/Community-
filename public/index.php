@@ -15,5 +15,6 @@ $app->get('/hello/{name}', function (Request $request, Response $response) {
 
 // post Routes
 require '../src/routes/posts.php';
+require '../src/routes/vacancies.php';
 
 $app->run();
