@@ -1,0 +1,35 @@
+curl --location --request POST "http://localhost:9090/Community-/public/api/vacancy/add" \
+  --header "Content-Type: application/json" \
+  --data "{\"company_id\":\"1\",\"title\":\"software engineering\",\"description\":\"we need to swe 2 years exp\",\"salary\":\"5000\",\"benefits\":\"ambition\"}"
+  
+  
+curl --location --request POST "http://localhost:9090/Community-/public/api/post/add" \
+  --header "Content-Type: application/json" \
+  --data "{\"user_id\":\"1\",\"content\":\"l love swe\",\"privacy\":\"public\"}"
+  
+  
+curl --location --request GET "http://localhost:9090/Community-/public/api/post/1"
+
+
+curl --location --request GET "http://localhost:9090/Community-/public/api/vacancy/1"
+
+
+curl --location --request PUT "http://localhost:9090/Community-/public/api/post/update/5" \
+  --header "Content-Type: application/json" \
+  --data "{\"user_id\":\"1\",\"content\":\"l love swe\",\"privacy\":\"test update\"}"
+  
+  
+  
+curl --location --request PUT "http://localhost:9090/Community-/public/api/vacancy/update/5" \
+  --header "Content-Type: application/json" \
+  --data "{\"company_id\":\"5\",\"title\":\"test update\",\"description\":null,\"salary\":null,\"benefits\":null}"
+  
+  
+  
+curl --location --request DELETE "http://localhost:9090/Community-/public/api/vacancy/delete/8"
+
+
+
+curl --location --request DELETE "http://localhost:9090/Community-/public/api/post/delete/5"
+
+
