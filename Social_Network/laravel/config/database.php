@@ -62,8 +62,8 @@ return [
         'testing' => [
             'driver'    => 'mysql',
             'host'      => env('DB_TEST_HOST', 'localhost'),
-            'database'  => env('DB_TEST_DATABASE', 'homestead_test'),
-            'username'  => env('DB_TEST_USERNAME', 'homestead'),
+            'database'  => env('DB_TEST_DATABASE', 'forge_test'),
+            'username'  => env('DB_TEST_USERNAME', 'forge'),
             'password'  => env('DB_TEST_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
