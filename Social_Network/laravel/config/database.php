@@ -59,6 +59,25 @@ return [
             ]) : [],
         ],
 
+        'testing' => [
+            'driver'    => 'mysql',
+            'host'      => env('DB_TEST_HOST', 'localhost'),
+            'database'  => env('DB_TEST_DATABASE', 'forge_test'),
+            'username'  => env('DB_TEST_USERNAME', 'forge'),
+            'password'  => env('DB_TEST_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),
