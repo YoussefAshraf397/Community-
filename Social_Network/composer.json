@@ -1,0 +1,5 @@
+{
+    "require": {
+        "overtrue/laravel-follow": "^1.1"
+    }
+}
