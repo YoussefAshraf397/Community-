@@ -41,6 +41,4 @@ $('.like').on('click', function(event) {
             }
         });
 });
-
-
-
+  

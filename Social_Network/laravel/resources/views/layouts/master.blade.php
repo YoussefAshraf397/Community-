@@ -19,7 +19,7 @@
     
 
 
-    <!--<script src="{{ URL::to('../resources/views/alluser.blade.php') }}"></script> -->
+ <script src="{{ URL::to('../resources/views/alluser.blade.php') }}"></script> 
 
 
     
