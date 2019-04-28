@@ -98,6 +98,19 @@ class UserController extends Controller
         $file = Storage::disk('local')->get($filename);
         return new Response($file, 200);
     }
+
+    public function users()
+    {
+        $users = User::all();
+        return view('alluser',compact('users'));
+    }
+
+    public function toggle(Request $request)
+    {
+        $user = User::find($request->user_id);
+        $data= auth()->user()->toggleFollow($user);
+        return response()->json(['success'=>$data]);        
+    }
 }
 
 
