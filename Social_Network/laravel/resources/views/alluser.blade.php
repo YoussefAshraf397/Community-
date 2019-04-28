@@ -1,5 +1,8 @@
-<!-- alluser.blade.php -->
+@extends('layouts.master')
 
+
+
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,6 +46,11 @@
   </div>
 </div>
 
+<script>
+        var urltoggle = '{{ route('toggle') }}';
+    </script>
+
+
 <script type="text/javascript">
 jQuery(document).ready(function() {     
 jQuery('.follow').click(function(){    
@@ -55,8 +63,8 @@ jQuery('.follow').click(function(){
     console.log(id);
     var reference= $('this');
     jQuery.ajax({
-       type:'POST',
-       url:'/toggle',
+      method: 'POST',
+      url:urltoggle,
        data:{user_id:id},
        success:function(data){
           if(jQuery.isEmptyObject(data.success.attached)){

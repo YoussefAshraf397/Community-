@@ -78,21 +78,20 @@ Route::post('/like', [
     'as' => 'like'
 ]);
 
-/*Route::post('/toggle', [
-    'uses' => 'SocialPostController@postLikePost',
+Route::post('/toggle', [
+    'uses' => 'UserController@toggle',
     'as' => 'toggle'
 ]);
-*/
-/*Route::get('/user', [
-    'uses' => 'UserController@toggle',
+
+Route::get('/user', [
+    'uses' => 'UserController@users',
     'as' => 'user'
 ]);
-*/
+
 
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/user','UserController@users');
-Route::post('/toggle','UserController@toggle');
+
