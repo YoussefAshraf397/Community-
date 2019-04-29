@@ -7,7 +7,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 // Get All posts
 $app->get('/api/posts', function(Request $request, Response $response){
-    $sql = "SELECT * FROM posts";
+    $sql = "SELECT * FROM social_posts";
 
     try{
         // Get DB Object
@@ -24,10 +24,10 @@ $app->get('/api/posts', function(Request $request, Response $response){
     }           
 });
 // Get Single post
-$app->get('/api/post/{post_id}', function(Request $request, Response $response){
-    $id = $request->getAttribute('post_id');
+$app->get('/api/post/{id}', function(Request $request, Response $response){
+    $id = $request->getAttribute('id');
 
-    $sql = "SELECT * FROM posts WHERE post_id = $id";
+    $sql = "SELECT * FROM social_posts WHERE id = $id";
 
     try{
         // Get DB Object
@@ -46,12 +46,12 @@ $app->get('/api/post/{post_id}', function(Request $request, Response $response){
 // Add post
 $app->post('/api/post/add', function(Request $request, Response $response){
     $user_id = $request->getParam('user_id');
-    $content = $request->getParam('content');
-    $privacy = $request->getParam('privacy');
+    $body = $request->getParam('body');
+
    
 
-    $sql = "INSERT INTO posts (user_id,content,privacy) VALUES
-    (:user_id,:content,:privacy)";
+    $sql = "INSERT INTO social_posts (user_id,body) VALUES
+    (:user_id,:body)";
 
     try{
         // Get DB Object
@@ -62,8 +62,7 @@ $app->post('/api/post/add', function(Request $request, Response $response){
         $stmt = $db->prepare($sql);
 
         $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam(':content', $content);
-        $stmt->bindParam(':privacy', $privacy);
+        $stmt->bindParam(':body', $body);
        
 
         $stmt->execute();
@@ -76,19 +75,19 @@ $app->post('/api/post/add', function(Request $request, Response $response){
     
 });
 // Update post
-$app->put('/api/post/update/{post_id}', function(Request $request, Response $response){
-    $post_id = $request->getAttribute('post_id');
+$app->put('/api/post/update/{id}', function(Request $request, Response $response){
+    $id = $request->getAttribute('id');
     $user_id = $request->getParam('user_id');
-    $content = $request->getParam('content');
-    $privacy = $request->getParam('privacy');
+    $body = $request->getParam('body');
+   
 
 
-    $sql = "UPDATE posts SET
+    $sql = "UPDATE social_posts SET
 				user_id 	= :user_id,
-				content 	= :content,
-                privacy		= :privacy
+				body 	= :body,
+              
                 
-			WHERE post_id = $post_id";
+			WHERE id = $id";
 
     try{
         // Get DB Object
@@ -99,8 +98,8 @@ $app->put('/api/post/update/{post_id}', function(Request $request, Response $res
         $stmt = $db->prepare($sql);
 
         $stmt->bindParam(':user_id', $user_id);
-        $stmt->bindParam(':content', $content);
-        $stmt->bindParam(':privacy', $privacy);
+        $stmt->bindParam(':body', $body);
+        
        
 
         $stmt->execute();
@@ -112,10 +111,10 @@ $app->put('/api/post/update/{post_id}', function(Request $request, Response $res
     }
 });
 // Delete post
-$app->delete('/api/post/delete/{post_id}', function(Request $request, Response $response){
-    $post_id = $request->getAttribute('post_id');
+$app->delete('/api/post/delete/{id}', function(Request $request, Response $response){
+    $id = $request->getAttribute('id');
 
-    $sql = "DELETE FROM posts WHERE post_id = $post_id";
+    $sql = "DELETE FROM social_posts WHERE id = $id";
 
     try{
         
