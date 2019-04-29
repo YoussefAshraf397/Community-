@@ -1,12 +1,13 @@
 @extends('layouts.master')
 
 
-
+   
   
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <title>Laravel Follow Unfollow Functionality Tutorial With Example</title>
+  <title>Following System</title>
   <meta charset="utf-8">
   <meta first_name="_token" content="{{csrf_token()}}" />
   <meta first_name="viewport" content="width=device-width, initial-scale=1">
