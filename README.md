@@ -11,6 +11,7 @@ Use the framework [slim](http://www.slimframework.com/) to install slim.
 ```bash
 php composer-setup.php --install-dir=bin
 composer require slim/slim "^3.12"
+composer create-project --prefer-dist laravel/laravel myProjectName
 ```
 
 ## Usage
